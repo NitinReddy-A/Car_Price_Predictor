@@ -30,7 +30,7 @@ This project demonstrates a car price prediction model using Linear Regression. 
 
 1. Load the dataset:
    ```python
-   data = pd.read_csv('CarPrice_Assignment.csv')
+   data = pd.read_csv('dataset/CarPrice_Assignment.csv')
 2. Follow the steps outlined in the Project Workflow section to preprocess the data, train the model, evaluate its performance, and visualize the results.
 
 ## Project Workflow
