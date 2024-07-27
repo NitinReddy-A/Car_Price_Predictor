@@ -37,48 +37,50 @@ This project demonstrates a car price prediction model using Linear Regression. 
 
 ### Exploratory Data Analysis
 Explore the dataset to understand its structure and identify any missing values:
-
-    print(data.head())
-    print(data.isnull().sum())
-    print(data.describe())
+```python
+print(data.head())
+print(data.isnull().sum())
+print(data.describe())
+```
 Visualize the distribution of car prices:
-
-    plt.figure(figsize=(10, 6))
-    sns.histplot(data['price'], kde=True)
-    plt.title('Distribution of Car Prices')
-    plt.xlabel('Price')
-    plt.ylabel('Frequency')
-    plt.show()
-
+```python
+plt.figure(figsize=(10, 6))
+sns.histplot(data['price'], kde=True)
+plt.title('Distribution of Car Prices')
+plt.xlabel('Price')
+plt.ylabel('Frequency')
+plt.show()
+```
 ### Data Preprocessing
 Select features and handle missing values:
-
-    features = ['horsepower', 'curbweight', 'enginesize', 'highwaympg']
-    X = data[features]
-    y = data['price']
-    X = X.fillna(X.mean())
-    y = y.fillna(y.mean())
+```python
+features = ['horsepower', 'curbweight', 'enginesize', 'highwaympg']
+X = data[features]
+y = data['price']
+X = X.fillna(X.mean())
+y = y.fillna(y.mean())
+```
 Scale the features:
-
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
+```python
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+```
 Split the dataset into training and testing sets:
+```python
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+```
+### Model Training
 
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-
-## Model Training
-
-### Initialize and train the Linear Regression model:
+Initialize and train the Linear Regression model:
 
 ```python
 model = LinearRegression()
 model.fit(X_train, y_train)
 ```
 
-## Model Evaluation
+### Model Evaluation
 
-### Evaluate the model's performance using various metrics:
+Evaluate the model's performance using various metrics:
 
 ```python
 y_pred = model.predict(X_test)
@@ -92,9 +94,9 @@ print(f'Mean Squared Error (MSE): {mse}')
 print(f'Root Mean Squared Error (RMSE): {rmse}')
 ```
 
-## Visualization Techniques
+### Visualization Techniques
 
-### Visualize the actual vs. predicted car prices:
+Visualize the actual vs. predicted car prices:
 
 ```python
 plt.figure(figsize=(10, 6))
@@ -106,9 +108,9 @@ plt.title('Actual vs Predicted Car Prices')
 plt.show()
 ```
 
-## Feature Importance
+### Feature Importance
 
-### Determine the importance of each feature:
+Determine the importance of each feature:
 
 ```python
 importance = model.coef_
@@ -122,9 +124,9 @@ plt.ylabel('Feature')
 plt.show()
 ```
 
-## Price Predictor Function
+### Price Predictor Function
 
-### Define a function to predict car prices based on input features:
+Define a function to predict car prices based on input features:
 
 ```python
 def predict_price(horsepower, curbweight, enginesize, highwaympg):
@@ -135,9 +137,9 @@ def predict_price(horsepower, curbweight, enginesize, highwaympg):
     return predicted_price[0]
 ```
 
-## Example Usage
+### Example Usage
 
-### Predict the price of a car with specified features:
+Predict the price of a car with specified features:
 
 ```python
 predicted_price = predict_price(horsepower=150, curbweight=3000, enginesize=2.5, highwaympg=25)
